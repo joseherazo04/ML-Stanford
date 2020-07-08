@@ -18,6 +18,7 @@ temp2 = (temp - y).^2;
 
 J = sum(temp2)/(2*length(X));
 
+% Better solution (didn't test this): J = (theta'*X)/m
 % =========================================================================
 
 end
