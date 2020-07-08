@@ -19,14 +19,12 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
-
-
-
-
-
-
-
-
 % =============================================================
 
+h = sigmoid(X*theta);
+
+J = (1/m)*(-y'*log(h)-(1-y)'*log(1-h));
+
+%grad = (1/m)*(h - y)'*X; 1x28 vector as results, bellow is a 28x1 vector as result
+grad = (1/m)*X'*(h - y);
 end
