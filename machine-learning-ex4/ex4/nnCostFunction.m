@@ -156,9 +156,9 @@ Theta2_grad = (1/m).*Delta2;
 
 %========================PART 3===============================
 %Adding regularization
+
 tempTheta1 = Theta1;
 tempTheta2 = Theta2;
-
 %first element to zero
 tempTheta1(:,1) = 0;
 tempTheta2(:,1) = 0;
