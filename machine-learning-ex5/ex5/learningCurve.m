@@ -50,15 +50,23 @@ error_val   = zeros(m, 1);
 %           
 %       end
 %
-
 % ---------------------- Sample Solution ----------------------
 
 
+for i = 1:m
 
-
-
-
-
+	theta = trainLinearReg(X(1:i,:), y(1:i), lambda);	
+	
+	%----------------------------Train Error---------------------------%
+	%train error
+	J_train = linearRegCostFunction(X(1:i,:), y(1:i), theta, 0);
+	error_train(i,1) = J_train; 
+	
+	%------------------------Cross Validation-------------------------%
+	J_val = linearRegCostFunction(Xval, yval, theta, 0);
+	error_val(i,1) = J_val; 
+	
+end
 % -------------------------------------------------------------
 
 % =========================================================================

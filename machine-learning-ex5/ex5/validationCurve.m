@@ -39,15 +39,21 @@ error_val = zeros(length(lambda_vec), 1);
 %
 %
 
-
-
-
-
-
-
-
-
-
+       for i = 1:length(lambda_vec)
+				   
+			lambda = lambda_vec(i);
+			theta = trainLinearReg(X, y, lambda);
+			
+			%----------------------------Train Error---------------------------%
+			%train error
+			J_train = linearRegCostFunction(X, y, theta, 0);
+			error_train(i,1) = J_train; 
+			
+			%------------------------Cross Validation-------------------------%
+			J_val = linearRegCostFunction(Xval, yval, theta, 0);
+			error_val(i,1) = J_val; 
+           
+       end
 % =========================================================================
 
 end

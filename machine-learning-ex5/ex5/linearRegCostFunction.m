@@ -10,7 +10,7 @@ m = length(y); % number of training examples
 
 % You need to return the following variables correctly 
 J = 0;
-grad = zeros(size(theta));
+grad = zeros(size(theta));			%vector 2x1
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost and gradient of regularized linear 
@@ -18,19 +18,26 @@ grad = zeros(size(theta));
 %
 %               You should set J to the cost and grad to the gradient.
 %
-
-
-
-
-
-
-
-
-
-
-
-
 % =========================================================================
+
+%We need to add a new column of ones in X
+
+h = X*theta;								%vector 12x1
+
+%Cost without regularization
+J = (1/(2*m))*sum((h-y).^2); 
+
+%Cost with regularization
+temptheta = theta;
+temptheta(1,:) = 0; %discart first element from regularization
+
+J = J + (lambda/(2*m))*sum(temptheta.^2);
+
+%Gradients
+I = eye(size(theta,1)); %using identity matrix to avoid changes in theta1
+I(1,1) = 0; %to discart theta0 from regularization
+grad = (1/m)*(X'*(h - y)) + (lambda/m)*I*theta;
+
 
 grad = grad(:);
 
