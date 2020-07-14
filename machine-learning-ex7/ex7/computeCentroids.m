@@ -25,14 +25,23 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
-
-
-
-
-
-
-
-
+for k = 1:K
+	
+	%binary vector with ones in the class k
+	temp_idx = idx == k;
+	
+	%total elements 
+	total_k = sum(temp_idx);
+	
+	%dot product with X
+	summation = sum( temp_idx.*X );
+	
+	%update
+	if (total_k > 0)
+		centroids(k,:) = ( 1 / total_k )*summation;
+	end
+	
+end
 % =============================================================
 
 
