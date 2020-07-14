@@ -18,7 +18,24 @@ Z = zeros(size(X, 1), K);
 %                    projection_k = x' * U(:, k);
 %
 
+%total examples
+total_X = size(X,1);
 
+%U reduced
+U_reduce = U(:, 1:K);
+
+%loop over every example
+for i = 1:total_X
+
+	%loop over top K eigenvectors
+	for k = 1:K
+		x = X(i, :)';
+		projection_k = x' * U_reduce(:, k);
+		
+		Z(i,k) = projection_k;
+	end
+
+end
 
 
 % =============================================================

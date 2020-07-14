@@ -21,8 +21,21 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 %               Notice that U(j, 1:K) is a row vector.
 %               
 
+%total examples
+total_Z = size(Z,1);
 
+%loop over every example
+for i = 1:total_Z
 
+	%loop over top K eigenvectors
+	for j = 1:K
+		v = Z(i, :)';
+		recovered_j = v' * U(j, 1:K)';
+		
+		X_rec(i,:) = recovered_j;
+	end
+
+end
 % =============================================================
 
 end
