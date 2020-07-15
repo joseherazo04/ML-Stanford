@@ -40,20 +40,14 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+%Vectorized implementation of the J cost functions and gradient descent. 
+%It feels really good to avoid using several for loops here !
 
+J = 0.5 * sum(sum(( X * Theta' .* R - Y).^2)) + (0.5 * lambda) * sum(sum(Theta.^2)) + (0.5 * lambda) * sum(sum(X.^2));
 
+X_grad = ( X * Theta' .* R - Y) * Theta + lambda.*X;
 
-
-
-
-
-
-
-
-
-
-
-
+Theta_grad = ( X * Theta' .* R - Y)' * X + lambda.*Theta;
 
 % =============================================================
 
